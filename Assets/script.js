@@ -1,24 +1,55 @@
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-
-startButton.addEventListener('click', startGame)
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++
-    setNextQuestion()
-})
+let currentQuestionIndex, shuffledQuestions
 
 function startGame() {
     startButton.classList.add('hide')
-    questionContainerElement.classList.remove('hide')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
-    // Initialize your game variables and display the first question
+    questionContainerElement.classList.remove('hide')
+    setNextQuestion()
 }
 
 function setNextQuestion() {
-    // Show the next question or finish the game if there are no more questions
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function selectAnswer() {
-    // Check the answer, display feedback, and set up the next question
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const questions = [
+    {
+        question: 'What does HTML stand for?',
+        answers: [
+            { text: 'Hyper Text Markup Language', correct: true },
+            { text: 'Hyperlinks and Text Markup Language', correct: false },
+            { text: 'Home Tool Markup Language', correct: false },
+            { text: 'Hyper Tool Markup Language', correct: false }
+        ]
+    },
+    // Add more questions as needed
+]
